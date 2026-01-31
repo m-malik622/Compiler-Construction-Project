@@ -1,2 +1,6 @@
-ADD=1
-'+'=1
+WS=1
+COMMENT=2
+KEYWORD=3
+ID=4
+ADD=5
+'+'=5

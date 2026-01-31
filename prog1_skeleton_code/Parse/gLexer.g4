@@ -16,6 +16,56 @@ lexer grammar gLexer;
 
 /* Tokens (all caps) */
 
+
+
+/**
+ * Token: WS(White space)
+ *
+ * Type: MISC
+ *
+ * Notes:
+ *   Skip any and all white space, new line, or tab between tokens 
+ *   uses build in feature to skip any occurences of WS when parsing 
+ */
+WS: [ \t\n]+ -> skip; 
+
+/**
+ * Token: COMMENT
+ *
+ * Type: MISC
+ *
+ * Notes:
+ *   Single line comment which will negate anything after // until EOL  
+ */
+COMMENT: '//' ~[\r\n]* -> skip; 
+
+
+/**
+ * Token: KEYWORD
+ *
+ * Type: Identifier
+ *
+ * Notes:
+ *  reserved for keywords like if and var which cannot be identifiers
+ */
+ KEYWORD
+  : 'var'
+  | 'fun'
+  | 'while'
+  | 'const'
+  | 'string'
+  | 'void'
+  | 'return'
+  | 'if'
+  | 'else'
+  | 'break'
+  | 'int'
+  | 'typedef'
+  | 'struct'
+  | 'union'
+  ;
+
+
 /**
  * Fragment: ALPHA
  *
@@ -50,11 +100,11 @@ fragment DIGIT
  *
  * Notes:
  *   Used to name variables, functions, types, and fields.
- *   Keyword tokens take priority. Cant have a variable named 'if'
+ *   Since KEYWORD is declared above, antlr takes priority of that so Identifier cannot be a keywrod. Cant have a variable named 'if'
  *   Case sensitive so var and VAR are distinct 
  */
 ID
-   : (ALPHA | '_')(ALPHA | '_' | DIGIT)*
+   : (ALPHA | '_')(ALPHA | '_' | DIGIT)*;
 
 
 

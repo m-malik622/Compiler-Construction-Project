@@ -25,3 +25,7 @@ replay_pid*
 
 #envs
 *.env
+
+#remove any reports from tests 
+*report.txt
+**/report.txt
