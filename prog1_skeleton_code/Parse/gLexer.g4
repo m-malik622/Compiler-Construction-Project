@@ -41,29 +41,27 @@ COMMENT: '//' ~[\r\n]* -> skip;
 
 
 /**
- * Token: KEYWORD
+ * Token: KEYWORDS
  *
  * Type: Identifier
  *
  * Notes:
  *  reserved for keywords like if and var which cannot be identifiers
  */
- KEYWORD
-  : 'var'
-  | 'fun'
-  | 'while'
-  | 'const'
-  | 'string'
-  | 'void'
-  | 'return'
-  | 'if'
-  | 'else'
-  | 'break'
-  | 'int'
-  | 'typedef'
-  | 'struct'
-  | 'union'
-  ;
+ VAR : 'var';
+ FUN : 'fun';
+ WHILE : 'while';
+ CONST : 'const';
+ STRING : 'string';
+ VOID : 'void';
+ RETURN : 'return';
+ IF : 'if';
+ ELSE : 'else';
+ BREAK : 'break';
+ INT : 'int';
+ TYPEDEF : 'typedef';
+ STRUCT : 'struct';
+ UNION : 'union';
 
 
 /**
@@ -119,3 +117,13 @@ ID
 ADD 
    : '+'
    ;
+
+
+/**
+ * Token: Assign
+ *
+ * Type: Operator
+ *
+ * Notes:
+ */
+ASSIGN: '=';
