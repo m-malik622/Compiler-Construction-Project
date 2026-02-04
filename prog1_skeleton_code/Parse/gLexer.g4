@@ -87,6 +87,7 @@ R_CURLY: '}';
 COLON: ':';
 PERIOD: '.';
 COMMA: ',';
+SEMICOLON: ';';
 
 LESS: '<';
 
