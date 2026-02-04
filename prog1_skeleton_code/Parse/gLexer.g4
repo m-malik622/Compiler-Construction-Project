@@ -63,6 +63,66 @@ COMMENT: '//' ~[\r\n]* -> skip;
  STRUCT : 'struct';
  UNION : 'union';
 
+ ENUM: 'enum';
+
+/**
+ * Token: PUNCTUATION & OPERATION
+ *
+ * Type: brackets, punctuation, opeerators
+ *
+ * Notes:
+ *  language specific operators and punctuations
+ */
+
+
+UNDERSCORE: '_';
+
+L_BRACKET: '[';
+R_BRACKET: ']';
+L_PARENTHESIS: '(';
+R_PARENTHESIS: ')';
+L_CURLY: '{';
+R_CURLY: '}';
+
+COLON: ':';
+PERIOD: '.';
+COMMA: ',';
+
+LESS: '<';
+
+ARROW_POINTER: '->';
+STAR_POINTER_OR_MULTIPLICATION: '*';
+
+LOGICAL_NOT_OR_EXCLAMATION: '!';
+LOGICAL_AND: '&&';
+LOGICAL_OR: '||'
+BITWISE_AND_OR_ADDRESS_OF: '&';
+BITWISE_OR: '|';
+BITWISE_NOT_OR_TILDE: '~'; 
+
+/**
+ * Token: ADD
+ *
+ * Type: Operator
+ *
+ * Notes:
+ *   Left-associative; precedence handled by parser grammar.
+ */
+ADD 
+   : '+'
+   ;
+
+
+/**
+ * Token: Assign
+ *
+ * Type: Operator
+ *
+ * Notes:
+ */
+ASSIGN: '=';
+
+
 
 /**
  * Fragment: ALPHA
@@ -106,24 +166,4 @@ ID
 
 
 
-/**
- * Token: ADD
- *
- * Type: Operator
- *
- * Notes:
- *   Left-associative; precedence handled by parser grammar.
- */
-ADD 
-   : '+'
-   ;
 
-
-/**
- * Token: Assign
- *
- * Type: Operator
- *
- * Notes:
- */
-ASSIGN: '=';
