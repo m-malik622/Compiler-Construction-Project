@@ -16,19 +16,6 @@ lexer grammar gLexer;
 
 /* Tokens (all caps) */
 
-
-
-/**
- * Token: WS(White space)
- *
- * Type: MISC
- *
- * Notes:
- *   Skip any and all white space, new line, or tab between tokens 
- *   uses build in feature to skip any occurences of WS when parsing 
- */
-WS: [ \t\n]+ -> skip; 
-
 /**
  * Token: COMMENT
  *
@@ -165,6 +152,29 @@ fragment DIGIT
 ID
    : (ALPHA | '_')(ALPHA | '_' | DIGIT)*;
 
+fragment S_CHAR: ~["\\\r\n] | ESC;
+
+fragment S_CHAR_SEQUENCE: (S_CHAR)+;
+
+fragment SIMPLE_ESC: [abfnrtv"'?\\];
+
+fragment OCTAL_ESC: [0-7][0-7]?[0-7]?;
+
+fragment HEX_ESCP: ('x')[0-9a-fA-F]+;
+
+fragment ESC: ('\\')(SIMPLE_ESC | OCTAL_ESC | HEX_ESCP);
+
+STRING_LITERAL : ('"')(S_CHAR_SEQUENCE)?('"');
 
 
 
+/**
+ * Token: WS(White space)
+ *
+ * Type: MISC
+ *
+ * Notes:
+ *   Skip any and all white space, new line, or tab between tokens 
+ *   uses build in feature to skip any occurences of WS when parsing 
+ */
+WS: [ \t\n]+ -> skip; 
