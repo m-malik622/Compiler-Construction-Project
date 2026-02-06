@@ -32,3 +32,4 @@ replay_pid*
 
 #ignore results
 ./report.txt
+prog1_skeleton_code/solution_report.txt

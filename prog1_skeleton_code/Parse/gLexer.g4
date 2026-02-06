@@ -50,8 +50,9 @@ COMMENT: '//' ~[\r\n]* -> skip;
  TYPEDEF : 'typedef';
  STRUCT : 'struct';
  UNION : 'union';
-
+ 
  ENUM: 'enum';
+
 
 /**
  * Token: PUNCTUATION & OPERATION
@@ -126,7 +127,7 @@ fragment ALPHA
    : [A-Za-z]
    ;
 
- 
+
 /**
  * Fragment: DIGIT
  *
@@ -179,3 +180,34 @@ STRING_LITERAL : ('"')(S_CHAR_SEQUENCE)?('"') { setText(StringHelper.convertEsc(
  *   uses build in feature to skip any occurences of WS when parsing 
  */
 WS: [ \t\n]+ -> skip; 
+
+/**
+*
+*  Token: Decimal Constant  
+*
+*  
+*
+*/
+// Go on slides 
+DEC: (0)|[1-9](DIGIT)*
+
+Token
+/**
+*
+*  Token: Hexadecimal Constant  
+*
+*  
+*
+*/
+
+HEX: ^(0x)[0-9a-fA-F]$;
+
+/**
+*
+*  Token: Octal Constant  
+*
+*  
+*
+*/
+
+OCT:  [0-7][0-7]?[0-7]?;
