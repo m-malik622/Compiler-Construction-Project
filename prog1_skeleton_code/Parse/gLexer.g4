@@ -53,9 +53,6 @@ COMMENT: '//' ~[\r\n]* -> skip;
  ENUM: 'enum';
 
 
- OCT: 'oct';
- HEX: 'hex';
-
 /**
  * Token: PUNCTUATION & OPERATION
  *
@@ -190,7 +187,8 @@ WS: [ \t\n]+ -> skip;
 *  
 *
 */
-INT: (DIGIT)+
+// Go on slides 
+DEC: (0)|[1-9](DIGIT)*
 
 Token
 /**
@@ -201,7 +199,7 @@ Token
 *
 */
 
-HEX: (HEX_ESCP)(DIGIT|ALPHA);
+HEX: ^(0x)[0-9a-fA-F]$;
 
 /**
 *
@@ -211,4 +209,4 @@ HEX: (HEX_ESCP)(DIGIT|ALPHA);
 *
 */
 
-OCT:  
+OCT:  [0-7][0-7]?[0-7]?;
