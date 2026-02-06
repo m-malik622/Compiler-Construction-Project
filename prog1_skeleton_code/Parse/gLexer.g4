@@ -3,6 +3,7 @@ lexer grammar gLexer;
 
 @header {
    package Parse.antlr_build;
+   import Parse.StringHelper;
 }
 
 
@@ -164,7 +165,7 @@ fragment HEX_ESCP: ('x')[0-9a-fA-F]+;
 
 fragment ESC: ('\\')(SIMPLE_ESC | OCTAL_ESC | HEX_ESCP);
 
-STRING_LITERAL : ('"')(S_CHAR_SEQUENCE)?('"');
+STRING_LITERAL : ('"')(S_CHAR_SEQUENCE)?('"') { setText(StringHelper.convertEsc(getText())); };
 
 
 
