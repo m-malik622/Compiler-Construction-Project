@@ -49,8 +49,12 @@ COMMENT: '//' ~[\r\n]* -> skip;
  TYPEDEF : 'typedef';
  STRUCT : 'struct';
  UNION : 'union';
-
+ 
  ENUM: 'enum';
+
+
+ OCT: 'oct';
+ HEX: 'hex';
 
 /**
  * Token: PUNCTUATION & OPERATION
@@ -125,7 +129,7 @@ fragment ALPHA
    : [A-Za-z]
    ;
 
- 
+
 /**
  * Fragment: DIGIT
  *
@@ -178,3 +182,33 @@ STRING_LITERAL : ('"')(S_CHAR_SEQUENCE)?('"');
  *   uses build in feature to skip any occurences of WS when parsing 
  */
 WS: [ \t\n]+ -> skip; 
+
+/**
+*
+*  Token: Decimal Constant  
+*
+*  
+*
+*/
+INT: (DIGIT)+
+
+Token
+/**
+*
+*  Token: Hexadecimal Constant  
+*
+*  
+*
+*/
+
+HEX: (HEX_ESCP)(DIGIT|ALPHA);
+
+/**
+*
+*  Token: Octal Constant  
+*
+*  
+*
+*/
+
+OCT:  
