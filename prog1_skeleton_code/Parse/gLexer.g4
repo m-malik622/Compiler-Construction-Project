@@ -167,7 +167,7 @@ fragment ESC: ('\\')(SIMPLE_ESC | OCTAL_ESC | HEX_ESCP);
 
 STRING_LITERAL : ('"')(S_CHAR_SEQUENCE)?('"');
 
-
+fragment HEX_PREFIX: ('0x');
 
 /**
  * Token: WS(White space)
@@ -188,9 +188,8 @@ WS: [ \t\n]+ -> skip;
 *
 */
 // Go on slides 
-DEC: (0)|[1-9](DIGIT)*
+DEC: [0]|(DIGIT)(DIGIT)*;
 
-Token
 /**
 *
 *  Token: Hexadecimal Constant  
@@ -199,7 +198,8 @@ Token
 *
 */
 
-HEX: ^(0x)[0-9a-fA-F]$;
+
+HEX: (HEX_PREFIX)[0-9a-fA-F]+;
 
 /**
 *
