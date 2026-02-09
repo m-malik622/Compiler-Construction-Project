@@ -188,7 +188,7 @@ WS: [ \t\n]+ -> skip;
 *
 */
 // Go on slides 
-DEC: [0]|(DIGIT)(DIGIT)*;
+DEC: [0]|[1-9](DIGIT)*;
 
 /**
 *
