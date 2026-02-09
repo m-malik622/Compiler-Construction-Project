@@ -19,12 +19,12 @@ public class StringHelper {
     }
 
     private static boolean isHexDigit(char c) {
-        if (c >= '0' && c <= '7') {
-            boolean isZeroTo=(c >= '0' && c <= '9');
-            boolean isLowerTo=(c >= 'a' && c <= 'f');
-            boolean isUpperTo=(c >= 'A' && c <= 'F');
+        boolean isZeroTo = (c >= '0' && c <= '9');
+        boolean isLowerTo = (c >= 'a' && c <= 'f');
+        boolean isUpperTo = (c >= 'A' && c <= 'F');
 
-            return isZeroTo | isLowerTo | isUpperTo;
+        if (isZeroTo | isLowerTo | isUpperTo) {
+            return true;
         }
         return false;
     }
@@ -37,7 +37,8 @@ public class StringHelper {
                 return i;
             }
             digiCount++;
-            if (digiCount >= 3) return i + 1;
+            if (digiCount >= 3)
+                return i + 1;
         }
         return escapeString.length();
     }
@@ -112,24 +113,24 @@ public class StringHelper {
             // handle hex
             if (escapeType == 'x') {
                 // is hex
-                int hexEnd = getHexEnd(sb.toString(), (lastIndex+1));
+                int hexEnd = getHexEnd(sb.toString(), (lastIndex + 1));
 
-                //Check to make sure digits were found after escape
-                if (hexEnd == (lastIndex+1)) {
+                // Check to make sure digits were found after escape
+                if (!isHexDigit(sb.charAt(lastIndex + 1))) {
                     throw new IllegalArgumentException("Parser Error: Invalid hex escape followed by no hex digits.");
                 }
 
-                String hexSub = sb.toString().substring((lastIndex+1), hexEnd);
+                String hexSub = sb.toString().substring((lastIndex + 1), hexEnd);
                 char charForm = hexToChar(hexSub);
-                //set new lastIndex
-                sb.delete(lastIndex+1, hexEnd);
+                // set new lastIndex
+                sb.delete(lastIndex + 1, hexEnd);
                 sb.setCharAt(lastIndex, charForm);
             } else if (isOctDigit(escapeType)) {
                 // is oct
                 int octEnd = getOctEnd(sb.toString(), lastIndex);
                 String octSub = sb.toString().substring(lastIndex, octEnd);
                 char charForm = octToChar(octSub);
-                sb.delete(lastIndex+1, octEnd);
+                sb.delete(lastIndex + 1, octEnd);
                 sb.setCharAt(lastIndex, charForm);
             } else {
                 // Handle normal escapes
