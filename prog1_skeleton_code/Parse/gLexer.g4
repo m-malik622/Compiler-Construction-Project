@@ -17,17 +17,31 @@ lexer grammar gLexer;
 
 /* Tokens (all caps) */
 
+
+
+
 /**
- * Token: COMMENT
+ * Token: SINGLE_COMMENT
  *
  * Type: MISC
  *
  * Notes:
  *   Single line comment which will negate anything after // until EOL  
  */
-COMMENT: '//' ~[\r\n]* -> skip; 
+SINGLE_COMMENT: '//' ~[\r\n]* -> skip; 
 
 
+/*
+ * Token: MULTI_COMMENT
+ *
+ * Type: MISC
+ *
+ * Notes:
+ *   Multiple line comment that will negate everything until EOF or   
+*/
+MULTI_COMMENT: '/*' .*? '*/' -> skip;
+
+ 
 /**
  * Token: KEYWORDS
  *
@@ -189,7 +203,7 @@ WS: [ \t\n]+ -> skip;
 *
 */
 // Go on slides 
-DEC: [0]|[1-9](DIGIT)*;
+DEC: '0'|[1-9] DIGIT*;
 
 /**
 *
