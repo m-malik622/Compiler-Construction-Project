@@ -182,7 +182,7 @@ fragment ESC: ('\\')(SIMPLE_ESC | OCTAL_ESC | HEX_ESCP);
 
 STRING_LITERAL : ('"')(S_CHAR_SEQUENCE)?('"') { setText(StringHelper.convertEsc(getText())); };
 
-fragment HEX_PREFIX: ('0x');
+fragment HEX_PREFIX: (('0x')|('0X'));
 
 /**
  * Token: WS(White space)
