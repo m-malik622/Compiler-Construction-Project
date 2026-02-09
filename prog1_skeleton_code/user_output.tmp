@@ -1,0 +1,11 @@
+rm -rf bin;
+rm -rf Parse/antlr_build;
+LOGICAL_OR      ||         line=1 col=0
+ID              _C         line=1 col=4
+ID              __a__i4    line=1 col=11
+OCT             07         line=1 col=20
+STRING_LITERAL  "S\n\005\xa\xCF" line=1 col=23
+line 1:41 token recognition error at: '/*'
+DEC             0          line=1 col=43
+STAR_POINTER_OR_MULTIPLICATION *          line=1 col=44
+EOF
