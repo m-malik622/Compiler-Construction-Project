@@ -1,1 +1,0 @@
-const	_C   ____q	0xfF 	"b\a\17\xf\11" 				  //jT( 	

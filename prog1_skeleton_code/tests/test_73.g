@@ -1,1 +1,0 @@
-string		int	= _Z6L	 	___F _F   			60461 0x7	"x\v\12\xd7\'\b"	 /*W/*/ 
